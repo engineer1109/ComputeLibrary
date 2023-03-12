@@ -1,4 +1,9 @@
 
+# Build for Nvidia OpenCL
+```shell
+scons Werror=1 -j8 debug=0 neon=0 opencl=1 os=linux arch=x86
+```
+
 > **⚠ Important**
 > From release 22.05: 'master' branch has been replaced with 'main' following our inclusive language update, more information [here](https://arm-software.github.io/ComputeLibrary/latest/contribution_guidelines.xhtml#S5_0_inc_lang).
 
