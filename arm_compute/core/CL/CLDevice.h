@@ -166,7 +166,7 @@ public:
             return {true, " -cl-arm-non-uniform-work-group-size "};
         }
 
-        return {false, ""};
+        return {true, " -cl-std=CL3.0 "};
     }
 
 private:

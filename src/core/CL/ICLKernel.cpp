@@ -79,6 +79,14 @@ void arm_compute::enqueue(cl::CommandQueue &queue, ICLKernel &kernel, const Wind
     {
         set_wbsm(kernel.kernel(), kernel.wbsm_hint());
     }
+
+    for (int i = 0; i < (int)gws.dimensions(); i++) {
+        if (lws[i] != 0 && gws[i] % lws[i] != 0) {
+            int K = gws[i] / lws[i];
+            gws.get()[i] = (K + 1) * lws[i];
+        }
+    }
+
     queue.enqueueNDRangeKernel(kernel.kernel(), cl::NullRange, gws, lws);
 }
 
